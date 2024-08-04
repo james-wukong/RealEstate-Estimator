@@ -1,0 +1,12 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: fastapi-image
+    container_name: house-price-container
+    command: uvicorn app.main:app --host 0.0.0.0 --timeout-keep-alive 1000 --log-level info --reload
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
